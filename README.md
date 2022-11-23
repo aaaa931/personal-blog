@@ -31,8 +31,8 @@
 ## service 說明
 * config：設定後端 baseUrl 等設定
 * 其餘 service 功能皆按照以下方法
-+ getData()：獲得全部資料
-+ filterData(condition)：獲得指定條件資料
-+ postData()：新增資料
-+ putData()：更新資料
-+ deleteData()：刪除資料
+  * getData()：獲得全部資料
+  * filterData(condition)：獲得指定條件資料
+  * postData()：新增資料
+  * putData()：更新資料
+  * deleteData()：刪除資料
