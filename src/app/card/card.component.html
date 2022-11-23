@@ -1,0 +1,51 @@
+<mat-card>
+  <div class="title-area">
+    <h2 class="my-3 d-flex">
+      {{post.title}}
+      <span class="sep"></span>
+      <button mat-icon-button *ngIf="post.owner === name && !isEdit" routerLink="/editpost/{{post.id}}"
+        color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button *ngIf="post.owner === name && isEdit" color="warn" (click)="onDelete(post.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </h2>
+    <p class="mb-3">
+      <mat-chip-list>
+        <mat-chip color="primary" selected="true" *ngFor="let label of post.labels">{{label}}</mat-chip>
+      </mat-chip-list>
+    </p>
+    <hr />
+  </div>
+  <mat-card-header>
+    <img [src]="getUser().avatar" mat-card-avatar class="avatar" />
+    <mat-card-title>
+      {{getUser().name}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{post.date.seconds * 1000 | twDate}}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <!-- link to post/:id, if not at post component -->
+  <div routerLink="/post/{{post.id}}" class="link" *ngIf="!isPost && !isEdit">
+    <img [src]="post.img" mat-card-image *ngIf="cardImg && post.img" class="cover ms-1 mt-2" />
+    <mat-card-content class="line-3">
+      <quill-view [content]="post.context" format="html"></quill-view>
+    </mat-card-content>
+  </div>
+  <!-- no link, if at post component -->
+  <ng-container *ngIf="isPost || isEdit">
+    <img [src]="post.img" mat-card-image *ngIf="cardImg && post.img" class="cover ms-1 mt-2" />
+    <mat-card-content>
+      <quill-view [content]="post.context" format="html" *ngIf="!isEdit"></quill-view>
+      <ng-container *ngIf="isEdit">
+        <quill-editor format="html" [(ngModel)]="post.context"></quill-editor>
+        <div class="mt-3 d-flex justify-content-center">
+          <button mat-raised-button color="primary" class="me-5" (click)="onSubmit(post.id)">發布</button>
+          <button mat-raised-button color="warn" routerLink="/postlist">取消</button>
+        </div>
+      </ng-container>
+    </mat-card-content>
+  </ng-container>
+</mat-card>

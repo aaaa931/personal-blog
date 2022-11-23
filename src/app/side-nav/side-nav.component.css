@@ -1,0 +1,29 @@
+:host ul {
+  list-style-type: none;
+}
+
+:host .column-2 {
+  columns: 2;
+}
+
+:host .min-h-3rem {
+  min-height: 3rem;
+}
+
+:host a {
+  color: black;
+  text-decoration: none;
+}
+
+:host .in-span {
+  position: absolute;
+  right: 30px;
+  top: -10px;
+  user-select: none;
+}
+
+:host .in-icon {
+  position: absolute;
+  right: 0px;
+  top: -8px;
+}

@@ -1,0 +1,9 @@
+<div class="row routeAnimation">
+  <ng-container>
+    <app-card [post]="post" [users]="user$" *ngIf="post$ | async as post; else loading"></app-card>
+    <ng-template #loading>
+      <app-loading></app-loading>
+    </ng-template>
+  </ng-container>
+  <!-- <app-card [post]="post" [users]="user$" *ngIf="post$ | async as post"></app-card> -->
+</div>

@@ -1,0 +1,7 @@
+:host .h-50vh {
+  height: 50vh;
+}
+
+:host div > .mat-button-toggle {
+  margin-right: 0.5rem;
+}

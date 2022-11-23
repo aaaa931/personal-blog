@@ -1,0 +1,9 @@
+<div class="routeAnimation">
+  <app-card [post]="post" [users]="users$" [cardImg]="true" *ngFor="let post of posts$ | async" class="me-5"></app-card>
+  <a routerLink="/addPost">
+    <button mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </a>
+</div>
+

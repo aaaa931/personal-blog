@@ -1,0 +1,14 @@
+.welcome {
+  font-style: italic;
+  font-weight: bold;
+  animation: welcome 2s;
+}
+
+@keyframes welcome {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

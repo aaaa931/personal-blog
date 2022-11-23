@@ -1,0 +1,42 @@
+<aside>
+  <!-- <form class="form mb-5" (submit)="onSubmit()">
+    <mat-form-field appearance="fill" class="w-100">
+      <mat-label>查詢</mat-label>
+      <input matInput id="searchInput" (keyup)="onKey($event)" />
+      <span class="border in-span text-secondary p-1">Ctrl + ;</span>
+      <mat-icon class="in-icon link" (click)="onSubmit()">search</mat-icon>
+    </mat-form-field>
+  </form> -->
+  <div class="mb-5">
+    <h2 class="text-center">最新消息</h2>
+    <div>
+      <h3>網站公告</h3>
+      <p *ngFor="let announcement of todolist$.announcement">{{announcement}}</p>
+      <hr />
+      <h3>現有問題</h3>
+      <p *ngFor="let active of todolist$.active">{{active}}</p>
+      <hr />
+      <h3>已修復問題</h3>
+      <p *ngFor="let completed of todolist$.completed">{{completed}}</p>
+    </div>
+  </div>
+  <div class="mb-5">
+    <h2 class="text-center">類別</h2>
+    <!-- <ul class="column-2">
+      <li class="text-center min-h-3rem" *ngFor="let label of labels$ | async">
+        <span routerLink="/postlist/{{label}}" class="link">{{label}}</span>
+        <mat-divider></mat-divider>
+      </li>
+    </ul> -->
+    <mat-chip-list>
+      <mat-chip
+        *ngFor="let label of labels$ | async"
+        selected="true"
+        routerLink="/postlist/{{label}}"
+        class="link"
+      >
+        {{label}}
+      </mat-chip>
+    </mat-chip-list>
+  </div>
+</aside>

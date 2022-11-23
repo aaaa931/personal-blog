@@ -1,0 +1,11 @@
+<div class="d-flex min-vh-100 justify-content-center align-items-center min-vw-25 routeAnimation">
+  <div class="col-12 col-lg-4 px-3">
+    <mat-form-field class="w-100" appearance="fill" (Submit)="onSubmit()" *ngIf="!showWelcome">
+      <mat-label>輸入暱稱來使用網站</mat-label>
+      <input matInput [(ngModel)]="name" (keyup)="onKey($event)">
+    </mat-form-field>
+    <h1 class="welcome text-center" *ngIf="showWelcome">歡迎，{{name}}</h1>
+    <!-- valid uni name -->
+    <div class="alert alert-danger" *ngIf="valid">{{errorMsg}}</div>
+  </div>
+</div>

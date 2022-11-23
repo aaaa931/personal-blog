@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// angular material plalette.scss
+// https://github.com/angular/components/blob/5.0.x/src/lib/core/theming/_palette.scss
+
+$light-primary: mat-palette($mat-blue, 900);
+$light-accent: mat-palette($mat-pink);
+$light-warn: mat-palette($mat-red);
+
+$light-theme: mat-light-theme($light-primary, $light-accent, $light-warn);
+@include angular-material-theme($light-theme);
+
+.light-theme {
+  @include angular-material-theme($light-theme);
+
+  .ql-editor.ql-blank::before {
+    // quill editor placeholder
+    font-size: 1rem;
+  }
+  // default
+
+  background-size: cover;
+  background: linear-gradient(45deg, rgba(255, 99, 132, 0.6), rgba(54, 162, 235, 0.6));
+  // https://uigradients.com/
+  // Dawn
+  // background: linear-gradient(to right, #f3904f, #3b4371);
+  // MegaTron
+  // background: linear-gradient(45deg, #c6ffdd, #fbd786, #f7797d);
+  // by design
+  // background: linear-gradient(to right, #009fff, #ec2f4b);
+}
+
+$dark-primary: mat-palette($mat-grey, 900);
+$dark-accent: mat-palette($mat-pink, 300);
+$dark-warn: mat-palette($mat-red, 300);
+
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  background-color: #303030;
+  color: #ccc;
+
+  // quill theme
+  // ref: https://stackoverflow.com/questions/60905915/change-the-colour-of-the-buttons-of-the-toolbar-when-using-quill
+  .ql-toolbar .ql-stroke {
+    stroke: #ccc !important;
+  }
+
+  .ql-toolbar .ql-fill {
+    stroke: #ccc !important;
+  }
+
+  .ql-toolbar .ql-picker {
+    color: #ccc !important;
+  }
+
+  .ql-editor.ql-blank::before {
+    // quill editor placeholder
+    color: rgba(204, 204, 204, 0.6) !important;
+    font-size: 1rem;
+  }
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.sep {
+  flex: 1 1 auto;
+}
+
+.link {
+  cursor: pointer !important;
+}
+
+// Quill custom font family
+// ref: https://github.com/KillerCodeMonkey/ngx-quill/issues/698
+
+// To show drop list display font-family context
+.ql-snow .ql-picker.ql-font .ql-picker-label::before,
+.ql-snow .ql-picker.ql-font .ql-picker-item::before {
+  content: attr(data-value) !important;
+}
+
+.ql-disabled .ql-editor {
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+.ql-editor {
+  font-size: 1rem;
+}
+
+.ql-editor .ql-size-large {
+  font-size: 1.5rem;
+}
+
+.ql-editor .ql-size-huge {
+  font-size: 2rem;
+}
+
+app-post-list .ql-editor {
+  cursor: pointer;
+}
+
+// add option class font-family property
+$text-editor-fonts: 'Roboto', 'Sans-Serif', 'Serif', 'Monospace', '標楷體', '微軟正黑體';
+
+@each $text-editor-font in $text-editor-fonts {
+  .ql-font-#{$text-editor-font} {
+    font-family: $text-editor-font;
+  }
+}
+
+.routeAnimation {
+  animation: route 0.5s;
+}
+
+@keyframes route {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

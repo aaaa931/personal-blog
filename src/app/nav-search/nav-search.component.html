@@ -1,0 +1,19 @@
+<h3 mat-dialog-title>查詢</h3>
+<mat-dialog-content>
+  <form (submit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>查詢</mat-label>
+      <input matInput [(ngModel)]="value" name="value" [matAutocomplete]="label" required />
+      <mat-autocomplete #label="matAutocomplete">
+        <!-- async pipe -> let a of arr | async -->
+        <mat-option *ngFor="let label of labels$ | async" [value]="label">{{label}}</mat-option>
+      </mat-autocomplete>
+      <mat-error *ngIf="">需要輸入關鍵字</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <div class="sep"></div>
+  <button type="submit" mat-flat-button color="primary" (click)="onSubmit()">查詢</button>
+  <button mat-flat-button color="warn" (click)="onClose()">取消</button>
+</mat-dialog-actions>

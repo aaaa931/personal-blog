@@ -1,0 +1,34 @@
+<form [formGroup]="form" (submit)="submit()" class="routeAnimation">
+  <div class="title-area">
+    <mat-form-field appearance="outline" class="w-100">
+      <h2>
+        <input matInput placeholder="文章標題" formControlName="title" (keyup)="onKey()">
+      </h2>
+    </mat-form-field>
+    <div class="mb-3">
+      <mat-chip-list>
+        <mat-chip *ngFor="let label of labels" (removed)="remove(label)" selected="true">
+          {{label}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+    <mat-chip-list matTooltip="為文章添加標籤">
+      <mat-chip *ngFor="let label of labels$ | async" (click)="add(label)">{{label}}</mat-chip>
+    </mat-chip-list>
+    <hr />
+  </div>
+  <div class="alert alert-danger" *ngIf="(f['title'].errors || f['context'].errors) && submited">
+    請填寫文章標題與文章內容
+  </div>
+  <!-- <div id="content" contenteditable="true" class="h-50vh" formControlName="content" (keydown)="onKey()">
+    <div class="123">{{date}}</div>
+  </div> -->
+  <quill-editor class="quill-theme" formControlName="context" (keyup)="onKey()"></quill-editor>
+  <div class="d-flex justify-content-center mt-5">
+    <button mat-raised-button type="submit" color="primary" class="me-5">送出</button>
+    <a mat-raised-button color="warn" routerLink="">取消</a>
+  </div>
+</form>

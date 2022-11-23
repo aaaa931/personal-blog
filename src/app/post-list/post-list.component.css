@@ -1,0 +1,27 @@
+.ip {
+  margin-right: 2rem;
+}
+.avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #888;
+}
+.mat-card-content {
+  /* 最多顯示三行文字 */
+  max-height: 4rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mat-fab {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
+}
+a {
+  text-decoration: none;
+  color: black;
+}

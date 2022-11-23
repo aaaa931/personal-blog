@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span routerLink="" class="link" matTooltip="回首頁">個人部落格</span>
+  <span class="sep"></span>
+  <button mat-icon-button (click)="themeChange()">
+    <mat-icon>brightness_medium</mat-icon>
+  </button>
+  <button mat-icon-button class="d-lg-none" (click)="showSearchDialog()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <div class="position-absolute searchBox w-75" *ngIf="searched">
+    <mat-form-field class="w-100">
+      <mat-label>查詢</mat-label>
+      <input matInput placeholder="查詢">
+    </mat-form-field>
+  </div>
+</mat-toolbar>
