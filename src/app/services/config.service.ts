@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConfigService {
-  private _api: string = "http://localhost:5001/personal-blog";
+  private _api: string = "http://localhost:5000";
 
   constructor() { }
 

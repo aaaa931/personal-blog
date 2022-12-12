@@ -38,6 +38,7 @@ import { RegisterComponent } from './register/register.component';
 import { DatePipe } from './pipes/date.pipe';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { LoadingComponent } from './loading/loading.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { LoadingComponent } from './loading/loading.component';
     DatePipe,
     EditPostComponent,
     LoadingComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

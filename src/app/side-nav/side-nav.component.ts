@@ -12,9 +12,8 @@ import { firstValueFrom } from 'rxjs';
 export class SideNavComponent implements OnInit {
   labels$: any = [];
   todolist$: any = [];
-  // listCompleted: string[] = ["修改 theme", "quill 測試", "新增 register component", "addpost api 接收資料", "新增 Quill 編輯器，測試 addPost submit 功能", "light theme 背景更換", "查詢功能實作", "postlist API route params", "post api", "user API", "postlist API", "postList", "post at postId", "nav", "sideNav", "切換 theme", "行動裝置查詢功能"];
-  // listActive: string[] = ["firebase todolist", "getdata order by timestamp", "post query = edit，反為上一頁處理", "編輯 event", "測試背景在高視窗效果", "驗證 register", "測試 register，驗證暱稱重複", "測試 addpost api", "新增 Quill view html 在 card.component", "手機查詢功能", "測試 user api", "API", "addPost", "rxjs", "angular form", "safe html"];
   _input: string = "";
+
   constructor(
     private router: Router,
     private LabelsService: LabelsService,
@@ -25,7 +24,8 @@ export class SideNavComponent implements OnInit {
     let searchInput = document.getElementById("searchInput");
     this.labels$ = this.LabelsService.getData();
     this.todolist$ = await firstValueFrom(this.todolistService.getData());
-    console.log(this.todolist$)
+    // console.log(`this.labels = ${JSON.stringify(this.labels$)}`);
+    // console.log(`this.todolist$ = ${JSON.stringify(this.todolist$)}`);
 
     document.addEventListener("keyup", e => {
       if (e.ctrlKey && e.key === ";") {

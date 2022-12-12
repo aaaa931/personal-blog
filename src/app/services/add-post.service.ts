@@ -15,14 +15,7 @@ export class AddPostService {
     ) { }
 
   addData(data: object) {
-    // return this.http.post(`${this.config.api}/${this._apiName}`, data)
-    //   .subscribe(res => {
-    //     console.log(res);
-
-    //     return res;
-    //   });
     return this.http.post(`${this.config.api}/${this._apiName}`, data);
-    console.log(`${this.config.api}/${this._apiName}`)
-    console.log(data);
+    // console.log(data);
   }
 }

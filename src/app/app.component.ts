@@ -1,5 +1,5 @@
 import { url } from './../assets/url';
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -19,20 +19,20 @@ export class AppComponent {
     this.url.redirect();
 
     const theme = localStorage.getItem("theme") as string;
-    let root = document.getElementById("root");
+    // let root = document.getElementById("root");
 
     if (!theme) {
       this.toggleTheme();
     }
 
     // root?.classList.add(this.theme as string);
-    console.log('ngOnInit');
+    // console.log('ngOnInit');
   }
 
   toggleTheme() {
-    const prevThme = this.theme as string;
+    // const prevThme = this.theme as string;
     const nextTheme = this.theme === "light-theme" ? "dark-theme" : "light-theme";
-    let root = document.getElementById("root");
+    // let root = document.getElementById("root");
     this.theme = nextTheme;
 
     localStorage.setItem("theme", nextTheme);

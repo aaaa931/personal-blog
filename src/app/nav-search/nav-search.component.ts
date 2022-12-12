@@ -23,12 +23,13 @@ export class NavSearchComponent implements OnInit {
   }
 
   onSubmit() {
-    const url = "/post/" + this.value;
+    const url = "/postlist/" + this.value;
 
     console.log(`${this.value}`);
     this.value = "";
     // console.log(`${this.value}`);
     this.router.navigate([url]);
+    this.onClose();
   }
 
   onClose() {

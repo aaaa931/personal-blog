@@ -1,4 +1,5 @@
 <aside>
+  <!-- 未開放的查詢功能，因 firestore 不支援包含查詢 -->
   <!-- <form class="form mb-5" (submit)="onSubmit()">
     <mat-form-field appearance="fill" class="w-100">
       <mat-label>查詢</mat-label>
@@ -22,12 +23,6 @@
   </div>
   <div class="mb-5">
     <h2 class="text-center">類別</h2>
-    <!-- <ul class="column-2">
-      <li class="text-center min-h-3rem" *ngFor="let label of labels$ | async">
-        <span routerLink="/postlist/{{label}}" class="link">{{label}}</span>
-        <mat-divider></mat-divider>
-      </li>
-    </ul> -->
     <mat-chip-list>
       <mat-chip
         *ngFor="let label of labels$ | async"

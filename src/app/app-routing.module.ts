@@ -1,3 +1,4 @@
+import { NotFoundComponent } from './not-found/not-found.component';
 import { EditPostComponent } from './edit-post/edit-post.component';
 import { RegisterComponent } from './register/register.component';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "post/:id", component: PostComponent},
   {path: "editpost/:id", component: EditPostComponent},
   {path: "addPost", component: AddPostComponent},
+  {path: "**", component: NotFoundComponent},
 ];
 
 @NgModule({

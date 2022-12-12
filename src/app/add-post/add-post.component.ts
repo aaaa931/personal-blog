@@ -6,7 +6,7 @@ import { SubmitCheckComponent } from './../submit-check/submit-check.component';
 import { MatDialog } from '@angular/material/dialog';
 import Quill from 'quill';
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-post',
@@ -17,7 +17,6 @@ export class AddPostComponent implements OnInit {
   name: string | null = localStorage.getItem("name");
   date: any = new Date().toISOString().substring(0, 10);
   labels: string[] = [];
-  // labels$: string[] = ["HTML", "CSS", "JavaScript", "Angular", "React", "Vue", "NodeJS", "MySql"];
   labels$: any = [];
   form!: FormGroup;
   check: boolean = false;
@@ -98,7 +97,6 @@ export class AddPostComponent implements OnInit {
       // form valide
       this.submited = true;
       // get all value => JSON.stringify(this.form.value)
-      // firestore post data typeof JSON
       console.log(`data => ${JSON.stringify({...this.form.value, labels: this.labels, name: this.name})}`);
 
       const addPost = this.AddPostService.addData({...this.form.value, labels: this.labels, name: this.name})

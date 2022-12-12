@@ -25,15 +25,22 @@ export class CardComponent implements OnInit {
     ) { }
 
   async ngOnInit() {
-    console.log(this.users);
-    console.log(this.post);
+    // console.log(`card user = ${JSON.stringify(this.users)}`);
+    // console.log(`card post = ${JSON.stringify(this.post)}`);
 
     this.isPost = this.router.url.includes("/post/") ? true : false;
     this.isEdit = this.router.url.includes("/editpost/") ? true : false;
   }
 
   getUser() {
-    return this.users.find((user: any) => user.name === this.post.owner);
+    // console.log(`user.name = ${user.name}`);
+    // return this.users.find((user: any) => user.name === this.post.owner);
+    const result = this.users.find((user: any) => user.name === this.post.owner)
+    if (typeof result !== "undefined") {
+      return result;
+    } else {
+      return { name: "未知使用者", avatar: "https://cdn.pixabay.com/photo/2016/09/28/02/14/user-1699635_960_720.png" };
+    }
   }
 
   onDelete = (id: string) => {

@@ -1,6 +1,6 @@
 import { NavSearchComponent } from './../nav-search/nav-search.component';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-nav',

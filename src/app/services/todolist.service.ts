@@ -1,4 +1,3 @@
-import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ConfigService } from './config.service';
@@ -15,7 +14,6 @@ export class TodolistService {
     ) { }
 
   getData() {
-    // return lastValueFrom(this.http.get(`${this.config.api}/${this._apiName}`));
     return this.http.get(`${this.config.api}/${this._apiName}`);
   }
 }

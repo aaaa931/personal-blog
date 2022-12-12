@@ -1,9 +1,43 @@
 <div class="routeAnimation">
-  <app-card [post]="post" [users]="users$" [cardImg]="true" *ngFor="let post of posts$ | async" class="me-5"></app-card>
+  <app-card
+    [post]="post"
+    [users]="users$"
+    [cardImg]="true"
+    *ngFor="let post of posts$"
+    class="me-5"
+  ></app-card>
+  <div class="row" *ngIf="isNoData">
+    <h1>十分抱歉，本網站接收資料出現問題，請聯繫網站管理員，並附上錯誤訊息，網站管理員會立即處理</h1>
+    <p>{{errorMsg}}</p>
+  </div>
+  <!-- 分頁 -->
+  <div class="row">
+    <div class="col">
+      <button
+        mat-raised-button
+        id="prev-page"
+        class="w-100 h-3rem"
+        (click)="changePage('prev')"
+        [disabled]="currentPage === 1"
+      >
+        <mat-icon>navigate_before</mat-icon>
+      </button>
+    </div>
+    <div class="col">
+      <button
+        mat-raised-button
+        id="next-page"
+        (click)="changePage('next')"
+        class="w-100 h-3rem"
+        [disabled]="lastPage"
+      >
+        <mat-icon>navigate_next</mat-icon>
+      </button>
+    </div>
+  </div>
   <a routerLink="/addPost">
     <button mat-fab color="primary">
       <mat-icon>add</mat-icon>
     </button>
   </a>
 </div>
-

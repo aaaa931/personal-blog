@@ -42,18 +42,14 @@ export class RegisterComponent implements OnInit {
     console.log(newName)
 
     this.user$ = this.UserService.filterData(newName);
-    console.log(0)
     const res: any = await firstValueFrom(this.user$);
-    // const res: any = await this.getData(newName);
-
-    console.log(res);
-    console.log(`typeof res.error ${typeof res.error}`)
+    // console.log(res);
+    // console.log(`typeof res.error ${typeof res.error}`)
 
     // throw error
     if (newName === "") {
       this.valid = true;
       this.errorMsg = "請輸入暱稱";
-      console.log(1)
       return;
     }
 
@@ -61,14 +57,12 @@ export class RegisterComponent implements OnInit {
       // check data is exists
       this.valid = true;
       this.errorMsg = `很抱歉，${newName} 已被註冊，請更換暱稱`;
-      console.log(2)
       return;
     }
 
-    console.log(3)
     this.UserService.postData(newUser);
     this.showWelcome = true
-    console.log(this.showWelcome)
+    // console.log(this.showWelcome);
     setTimeout(this.welcome, 2000);
   }
 

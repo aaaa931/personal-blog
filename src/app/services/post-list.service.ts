@@ -13,11 +13,23 @@ export class PostListService {
     private config: ConfigService = new ConfigService()
     ) { }
 
-  getData() {
-    return this.http.get(`${this.config.api}/${this._apiName}`);
+  getData(id: string = "", page: string = "") {
+    // console.log(`service id = ${id}, page = ${page}`);
+    return this.http.get(`${this.config.api}/${this._apiName}`, {
+      params: {
+        id: id,
+        type: page,
+      }
+    });
   }
 
-  filterData(label: string) {
-    return this.http.get(`${this.config.api}/${this._apiName}/${label}`);
+  filterData(id: string = "", page: string = "", label: string) {
+    // console.log(`service id = ${id}, page = ${page}`);
+    return this.http.get(`${this.config.api}/${this._apiName}/${label}`, {
+      params: {
+        id: id,
+        type: page,
+      }
+    });
   }
 }

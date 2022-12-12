@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { url } from './../../assets/url';
 import { UserService } from './../services/user.service';
 import { PostService } from '../services/post.service';
@@ -21,13 +22,14 @@ export class PostComponent implements OnInit {
     private url: url,
     ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.url.redirect();
 
     this.id = this.route.snapshot.paramMap.get("id");
     this.post$ = this.PostService.filterData(this.id);
-    this.UserService.getData().subscribe(data => {
-      this.user$ = data;
-    });
+    this.user$ = await lastValueFrom(this.UserService.getData());
+
+    // console.log(`this.post$ = ${JSON.stringify(this.post$)}`);
+    // console.log(`this.user$ = ${JSON.stringify(this.user$)}`);
   }
 }

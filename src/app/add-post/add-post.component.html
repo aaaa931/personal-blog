@@ -23,9 +23,6 @@
   <div class="alert alert-danger" *ngIf="(f['title'].errors || f['context'].errors) && submited">
     請填寫文章標題與文章內容
   </div>
-  <!-- <div id="content" contenteditable="true" class="h-50vh" formControlName="content" (keydown)="onKey()">
-    <div class="123">{{date}}</div>
-  </div> -->
   <quill-editor class="quill-theme" formControlName="context" (keyup)="onKey()"></quill-editor>
   <div class="d-flex justify-content-center mt-5">
     <button mat-raised-button type="submit" color="primary" class="me-5">送出</button>
