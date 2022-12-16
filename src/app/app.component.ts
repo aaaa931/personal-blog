@@ -1,5 +1,6 @@
 import { url } from './../assets/url';
 import { Component, Output, EventEmitter } from '@angular/core';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -12,25 +13,27 @@ export class AppComponent {
   theme = localStorage.getItem("theme");
   @Output() toggleThemRequest = new EventEmitter<any>();
 
-  constructor(private url: url) {
+  constructor(private url: url, private overlayContainer: OverlayContainer) {
   }
 
   ngOnInit(): void {
     this.url.redirect();
 
-    const theme = localStorage.getItem("theme") as string;
+    // const theme = localStorage.getItem("theme") as string;
     // let root = document.getElementById("root");
 
-    if (!theme) {
+    if (!this.theme) {
       this.toggleTheme();
     }
+
+    this.overlayContainer.getContainerElement().classList.add(this.theme as string);
 
     // root?.classList.add(this.theme as string);
     // console.log('ngOnInit');
   }
 
   toggleTheme() {
-    // const prevThme = this.theme as string;
+    const prevThme = this.theme as string;
     const nextTheme = this.theme === "light-theme" ? "dark-theme" : "light-theme";
     // let root = document.getElementById("root");
     this.theme = nextTheme;
@@ -38,6 +41,8 @@ export class AppComponent {
     localStorage.setItem("theme", nextTheme);
     // root?.classList.add(nextTheme);
     // root?.classList.remove(prevThme);
+    this.overlayContainer.getContainerElement().classList.remove(prevThme);
+    this.overlayContainer.getContainerElement().classList.add(this.theme as string);
     console.log('nextThme', nextTheme);
     console.log(localStorage.getItem("theme"));
   }

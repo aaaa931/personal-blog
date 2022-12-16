@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { SubmitCheckComponent } from './../submit-check/submit-check.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PostService } from './../services/post.service';
@@ -68,7 +69,7 @@ export class CardComponent implements OnInit {
     console.log(this.post.context);
     console.log(id);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async result => {
       check = result?.submit;
 
       if (!check) {
@@ -78,9 +79,10 @@ export class CardComponent implements OnInit {
       }
       console.log(`check ${check}`);
 
-      this.postService.putData(id, {context: this.post.context}).subscribe(res => {
-        console.log(`post put success`)
-      });
+      // this.postService.putData(id, {context: this.post.context}).subscribe(res => {
+      //   console.log(`post put success`)
+      // });
+      await lastValueFrom(this.postService.putData(id, {context: this.post.context}))
       this.router.navigate([`/post/${id}`]);
     });
   }
