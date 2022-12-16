@@ -1,6 +1,6 @@
 import { url } from './../assets/url';
 import { Component, Output, EventEmitter } from '@angular/core';
-import { OverlayContainer } from '@angular/cdk/overlay';
+// import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent {
   theme = localStorage.getItem("theme");
   @Output() toggleThemRequest = new EventEmitter<any>();
 
-  constructor(private url: url, private overlayContainer: OverlayContainer) {
+  constructor(private url: url, /*private overlayContainer: OverlayContainer*/) {
   }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class AppComponent {
       this.toggleTheme();
     }
 
-    this.overlayContainer.getContainerElement().classList.add(this.theme as string);
+    // this.overlayContainer.getContainerElement().classList.add(this.theme as string);
 
     // root?.classList.add(this.theme as string);
     // console.log('ngOnInit');
@@ -41,8 +41,8 @@ export class AppComponent {
     localStorage.setItem("theme", nextTheme);
     // root?.classList.add(nextTheme);
     // root?.classList.remove(prevThme);
-    this.overlayContainer.getContainerElement().classList.remove(prevThme);
-    this.overlayContainer.getContainerElement().classList.add(this.theme as string);
+    // this.overlayContainer.getContainerElement().classList.remove(prevThme);
+    // this.overlayContainer.getContainerElement().classList.add(this.theme as string);
     console.log('nextThme', nextTheme);
     console.log(localStorage.getItem("theme"));
   }
