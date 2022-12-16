@@ -78,7 +78,11 @@ export class CardComponent implements OnInit {
       }
       console.log(`check ${check}`);
 
-      this.postService.putData(id, {context: this.post.context}).subscribe(() => this.router.navigate([`/post/${id}`]));
+      this.postService.putData(id, {context: this.post.context}).subscribe({
+        complete: () => {
+            this.router.navigate([`/post/${id}`])
+        }
+      });
       // this.router.navigate([`/post/${id}`]);
     });
   }
